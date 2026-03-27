@@ -1,0 +1,152 @@
+{
+  "name": "默认规则",
+  "author": "yuanv4",
+  "version": 1,
+  "windowRules": [
+    {
+      "packageName": "com.eg.android.AlipayGphone",
+      "type": "EXPENSE",
+      "fields": {
+        "amount": {
+          "交易成功": {
+            "valueDirection": "sibling:next",
+            "valueRegex": "([\\d.]+)",
+            "valueGroup": 1
+          },
+          "自动扣款成功": {
+            "valueDirection": "sibling:next"
+          }
+        },
+        "counterparty": {
+          "收款方全称": {
+            "valueDirection": "sibling:next"
+          }
+        },
+        "tradeAccount": {
+          "付款方式": {
+            "valueDirection": "sibling:next"
+          }
+        },
+        "tradeTime": {
+          "支付时间": {
+            "valueDirection": "sibling:next"
+          }
+        },
+        "category": {
+          "账单分类": {
+            "valueDirection": "sibling:next"
+          }
+        },
+        "detail": {
+          "转账备注": {
+            "valueDirection": "sibling:next"
+          },
+          "付款备注": {
+            "valueDirection": "sibling:next"
+          },
+          "交易详情": {
+            "valueDirection": "sibling:next"
+          }
+        },
+        "balance": {}
+      }
+    }
+  ],
+  "notificationRules": [
+    {
+      "packageName": "com.chinamworld.main",
+      "type": "EXPENSE",
+      "titleContains": "动账提醒",
+      "contentContains": "支出人民币",
+      "fields": {
+        "amount": {
+          "regex": "支出人民币([\\d,]+\\.?\\d*)元",
+          "template": "{1}"
+        },
+        "tradeAccount": {
+          "regex": "尾号(\\d+)的(储蓄账户|信用卡账户)",
+          "template": "{2}({1})"
+        },
+        "tradeTime": {
+          "regex": "(\\d+月\\d+日\\d+时\\d+分)",
+          "template": "{1}",
+          "inputFormat": "M月d日H时m分",
+          "outputFormat": "yyyy-MM-dd HH:mm:ss"
+        }
+      }
+    },
+    {
+      "packageName": "com.chinamworld.main",
+      "type": "EXPENSE",
+      "titleContains": "动账提醒",
+      "contentContains": "消费人民币",
+      "fields": {
+        "amount": {
+          "regex": "消费人民币([\\d,]+\\.?\\d*)元",
+          "template": "{1}"
+        },
+        "tradeAccount": {
+          "regex": "尾号(\\d+)的(信用卡|储蓄卡)",
+          "template": "{2}({1})"
+        },
+        "tradeTime": {
+          "regex": "(\\d+月\\d+日\\d+时\\d+分)",
+          "template": "{1}",
+          "inputFormat": "M月d日H时m分",
+          "outputFormat": "yyyy-MM-dd HH:mm:ss"
+        }
+      }
+    },
+    {
+      "packageName": "com.android.mms.service",
+      "type": "EXPENSE",
+      "titleContains": "建设银行",
+      "contentContains": "支出",
+      "fields": {
+        "amount": {
+          "regex": "支出([\\d,]+\\.?\\d*)元",
+          "template": "{1}"
+        },
+        "tradeAccount": {
+          "regex": "账户(\\d+)",
+          "template": "储蓄卡({1})"
+        },
+        "tradeTime": {
+          "regex": "于(\\d{1,2}月\\d{1,2}日\\d{2}:\\d{2}:\\d{2})",
+          "template": "{1}",
+          "inputFormat": "M月d日HH:mm:ss",
+          "outputFormat": "yyyy-MM-dd HH:mm:ss"
+        },
+        "balance": {
+          "regex": "可用余额([\\d,]+\\.?\\d*)元",
+          "template": "{1}"
+        },
+        "detail": {
+          "regex": "附言：([^,，]+)",
+          "template": "{1}"
+        }
+      }
+    },
+    {
+      "packageName": "com.chinamworld.main",
+      "type": "INCOME",
+      "contentContains": "活期结息收入",
+      "fields": {
+        "amount": {
+          "regex": "收入人民币([\\d,]+\\.?\\d*)元",
+          "template": "{1}"
+        },
+        "tradeAccount": {
+          "regex": "(尾号\\d+账户)",
+          "template": "{1}"
+        },
+        "tradeTime": {
+          "regex": "(\\d{2}月\\d{2}日)",
+          "template": "{1}",
+          "inputFormat": "M月d日",
+          "outputFormat": "yyyy-MM-dd HH:mm:ss"
+        }
+      }
+    }
+  ]
+}
