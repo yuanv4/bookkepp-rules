@@ -1,0 +1,17 @@
+{
+  "skill_name": "notification-rule-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我给这条通知生成规则：\n应用：com.eg.android.AlipayGphone\n标题：交易提醒\n内容：你有一笔6.00元的支出，点击领取10个支付宝积分。\n时间：2026-03-25 08:52:22",
+      "expected_output": "生成 packageName 为 com.eg.android.AlipayGphone 的 notificationRules 条目，titleContains 过滤「交易提醒」，amount 正则从「你有一笔6.00元的支出」提取 6.00，template 用 {1}，enabled 为 false",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我给这条通知生成规则：\n应用：com.chinamworld.main\n标题：动账提醒\n内容：您尾号9359的信用卡账户3月25日8时52分消费人民币6.00元。点击查看>>\n时间：2026-03-25 08:52:28",
+      "expected_output": "生成 packageName 为 com.chinamworld.main 的 notificationRules 条目，titleContains 过滤「动账提醒」，contentContains 过滤「消费人民币」，amount 正则提取 6.00，tradeAccount 用多组 template 将「尾号9359的信用卡」重组为「信用卡(9359)」，tradeTime 提取「3月25日8时52分」，enabled 为 false",
+      "files": []
+    }
+  ]
+}
