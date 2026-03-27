@@ -2,7 +2,7 @@
 
 此文件定义了无障碍服务提取账单信息的完整规则集，包含窗口规则和通知规则。
 规则通过**订阅模式**分发：应用启动时从配置的远端 URL 拉取（支持 ETag 缓存），不再内置于 APK。
-本文件托管于 `rule/` 目录，可通过 raw.githubusercontent.com 直接订阅。
+本文件由私有源码仓库自动同步到公开仓库 [`yuanv4/bookkepp-rules`](https://github.com/yuanv4/bookkepp-rules)，可通过 raw.githubusercontent.com 直接订阅。
 
 ---
 
